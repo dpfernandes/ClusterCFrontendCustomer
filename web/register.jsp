@@ -19,7 +19,7 @@
             <input type="submit" value="validate">
         </form> 
         
-        
+<!-- script to validate the user/email and password formats -->        
         <script>
             function pass() {
                 var pass_1 = document.forms["myForm"].pass_1.value.length;
@@ -31,5 +31,6 @@
                 return true;
             }
         </script>
+<!-- end of the javascript script -->        
     </body>
 </html>

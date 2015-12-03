@@ -13,22 +13,22 @@
 
     <h1>Welcome to the Booking online system!</h1>       
 </head>
-
-
-</head>
 <body>
     <a href="/ClusterCFrontendCustomer/register.jsp">  register profile page </a>
     <br>
     <br>
+    <a href="/ClusterCFrontendCustomer/login.jsp">  to test purposes </a>
+    <br>
+    <br>
 
     <div id="msgUserPassword" style="display:none;" >Please fill in the username and password</div>
-    <div id="msgUser" style="display:none;" >Please fill in the username </div>
-    <div id="msgPassword"  style="display:none;" >Please fill in the password</div>
-    <div id="invalidUser"  style="display:none;" >The email is not valid. Please check!</div>
+    <div id="msgUser"         style="display:none;" >Please fill in the username </div>
+    <div id="msgPassword"     style="display:none;" >Please fill in the password</div>
+    <div id="invalidUser"     style="display:none;" >The email is not valid. Please check!</div>
 
 
 
-
+    <!-- script to validate the user/email and password formats -->
     <script type="text/javascript">
         function showMsg(id) {
         document.getElementById('msgUserPassword').style.display = "none";
@@ -47,28 +47,44 @@
         valid = false;
         if (document.login_form.user.value.length === 0)
         {
-        if (document.login_form.pass.value.length === 0)
-        {
-        showMsg('msgUserPassword');
+             if (document.login_form.pass.value.length === 0)
+             {
+                showMsg('msgUserPassword');
+             } 
+             else 
+                   {
+                        if (validateEmail("user") === true)
+                        {
+                            showMsg('invalidUser');
+                        }
+                        else
+                        {
+                            showMsg('msgUser');
+                        }
+                    }                    
         } else
-                showMsg('msgUser');
-        } else
+            {
                 showMsg('msgPassword');
-        }// else if (validateEmail("user") === true)
-        //{
-        //         showMsg('invalidUser');
-        //}
+            }
+        }
+
         return valid;
         }
 
-//        function validateEmail("user")
-  //      {
-    //    var re = /^([a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/i;
-      //  return re.test("user");
-        //}
 
-
+      
     </script>
+    
+    <!-- end of the javascript script
+      function validateEmail("user")
+        {
+             var re = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
+            return re.test("user");
+        }
+    
+    -->    
+
+
 
 
     <form name="login_form" action="LoginServlet" method="post"
@@ -93,4 +109,4 @@
     </form>
 
 </body>
-</html>
+
